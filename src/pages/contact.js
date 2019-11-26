@@ -36,7 +36,7 @@ class SecondPage extends React.Component {
       content : this.refs.content.value,
     };
 
-    await postData('https://localhost:5001/contact', message);
+    await postData('https://api.neocra.com/contact', message);
     //alert(message);
   }
   render()
