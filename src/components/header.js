@@ -45,6 +45,13 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </div>
+     
+    </div>
+    <div className="header-right">
+      <Link to="/contact">
+            contact
+          </Link> 
+
     </div>
   </header>
 )
