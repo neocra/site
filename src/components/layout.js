@@ -25,8 +25,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-    <div      
-      style={{backgroundImage:'linear-gradient(100deg, #5E8FB8, #7E67FF)'}}>
+    <div>
+      <div style={{backgroundImage:'linear-gradient(100deg, #5E8FB8, #7E67FF)', width: '100%', height: '400px', position:'absolute', top: '0px', zIndex:-1}}></div>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
       </div> 
     </div>
     <footer>
-          © {new Date().getFullYear()}, neocra
+          <div>© {new Date().getFullYear()}, neocra</div>
     </footer>
    </>
   )
