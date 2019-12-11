@@ -20,7 +20,18 @@ const Logo = () => {
   return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
 }
 
-const Header = ({ siteTitle }) => (
+const Lang = ({value, locale, location}) =>{
+  if(locale !== value){
+    return (
+  <Link to={location.pathname.replace('/'+locale+'/', '/'+value+'/')}>
+    {value}
+    </Link> );    
+  }
+
+  return <></>;
+}
+
+const Header = ({ siteTitle, locale, location }) => (
   <header
     style={{
       backgroundColor:'rgba(255,255,255,0.3)',
@@ -48,10 +59,14 @@ const Header = ({ siteTitle }) => (
      
     </div>
     <div className="header-right">
-      <Link to="/contact/">
+      <Link to={locale + '/contact/'}>
             contact
           </Link> 
-
+          <Link to={locale + '/about/'}>
+            about
+          </Link> 
+          <Lang value='fr' locale={locale} location={location} />
+          <Lang value='en' locale={locale} location={location} />
     </div>
   </header>
 )
