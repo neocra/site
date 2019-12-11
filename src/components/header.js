@@ -48,7 +48,7 @@ const Header = ({ siteTitle }) => (
      
     </div>
     <div className="header-right">
-      <Link to="/contact">
+      <Link to="/contact/">
             contact
           </Link> 
 
