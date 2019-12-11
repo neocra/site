@@ -1,8 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "./layout"
+import SEO from "./seo"
 
 async function postData(url = '', data = {}) {
   // Default options are marked with *
@@ -22,7 +21,7 @@ async function postData(url = '', data = {}) {
   return await response.json(); // parses JSON response into native JavaScript objects
 }
 
-class SecondPage extends React.Component { 
+class Contact extends React.Component { 
   constructor(){
     super();
     this.send = this.send.bind(this);
@@ -42,8 +41,8 @@ class SecondPage extends React.Component {
   render()
   { 
     return (
-        <Layout>
-          <SEO title="contact" />
+      <Layout location={this.props.location}>
+        <SEO title="contact" />
           <div className="page-contact">
             <div className="contact-info">
               <h1>neocra</h1>

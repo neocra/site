@@ -6,6 +6,15 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-i18n',
+      options: {        
+        langKeyDefault: 'en',
+        useLangKeyLayout: false,
+        langKeyForNull: 'any',
+        prefixDefault: true
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
