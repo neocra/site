@@ -21,10 +21,13 @@ async function postData(url = '', data = {}) {
   return await response.json(); // parses JSON response into native JavaScript objects
 }
 
-class Contact extends React.Component { 
+class ContactForm extends React.Component { 
   constructor(){
     super();
     this.send = this.send.bind(this);
+    this.state={
+      isSent: false,
+    };
   }
   
   async send(){
@@ -36,31 +39,31 @@ class Contact extends React.Component {
     };
 
     await postData('https://api.neocra.com/contact', message);
-    //alert(message);
+
+    this.setState({
+      isSent: true,
+    });
   }
   render()
   { 
+    if(this.state.isSent){
+      return (
+        <div className="contact-form">
+          <span>{this.props.messageSent}</span>
+        </div>
+      );
+    }    
     return (
-      <Layout location={this.props.location}>
-        <SEO title="contact" />
-          <div className="page-contact">
-            <div className="contact-info">
-              <h1>neocra</h1>
-              <p>128 rue la Boétie<br/>75008 Paris</p>
-              <p>contact@neocra.com</p>
-            </div>
-            <div className="contact-form">
-              <span>Contact</span>
-              <input ref="fullName" type="text" placeholder="Full name" />
-              <input ref="email" type="text" placeholder="E-Mail" />
-              <input ref="subject" type="text" placeholder="Subject" />
-              <textarea ref="content" type="text" placeholder="Content" />
-              <input ref="send" type="button" onClick={this.send} value="Send" />
-            </div>
-          </div>
-        </Layout>
+        <div className="contact-form">
+          <span>Contact</span>
+          <input ref="fullName" type="text" placeholder={this.props.fullNamePlace} />
+          <input ref="email" type="text" placeholder={this.props.emailPlace} />
+          <input ref="subject" type="text" placeholder={this.props.subjectPlace} />
+          <textarea ref="content" type="text" placeholder={this.props.descriptionPlace} />
+          <input ref="send" type="button" onClick={this.send} value={this.props.sendButton} />
+        </div>
       );
     }
 }
 
-export default SecondPage
+export default ContactForm

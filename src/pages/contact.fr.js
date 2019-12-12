@@ -2,41 +2,9 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ContactForm from "../components/contactform";
 
-async function postData(url = '', data = {}) {
-  // Default options are marked with *
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrer: 'no-referrer', // no-referrer, *client
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  return await response.json(); // parses JSON response into native JavaScript objects
-}
-
-class SecondPage extends React.Component { 
-  constructor(){
-    super();
-    this.send = this.send.bind(this);
-  }
-  
-  async send(){
-    var message = {
-      email : this.refs.email.value,
-      fullName : this.refs.fullName.value,
-      subject : this.refs.subject.value,
-      content : this.refs.content.value,
-    };
-
-    await postData('https://api.neocra.com/contact', message);
-  }
+class ContactPage extends React.Component {   
   render()
   { 
     return (
@@ -48,18 +16,17 @@ class SecondPage extends React.Component {
               <p>128 rue la Boétie<br/>75008 Paris</p>
               <p>contact@neocra.com</p>
             </div>
-            <div className="contact-form">
-              <span>Contact</span>
-              <input ref="fullName" type="text" placeholder="Nom" />
-              <input ref="email" type="text" placeholder="E-Mail" />
-              <input ref="subject" type="text" placeholder="Sujet" />
-              <textarea ref="content" type="text" placeholder="Description" />
-              <input ref="send" type="button" onClick={this.send} value="Envoyer" />
-            </div>
+            <ContactForm 
+              messageSent="Message envoyé"
+              fullNamePlace="Nom complet" 
+              emailPlace="E-Mail" 
+              subjectPlace="Sujet" 
+              descriptionPlace="Description" 
+              sendButton="Envoyer" />
           </div>
         </Layout>
       );
     }
 }
 
-export default SecondPage
+export default ContactPage
