@@ -23,7 +23,7 @@ const Logo = () => {
 const Lang = ({value, locale, location}) =>{
   if(locale !== value){
     return (
-  <Link to={location.pathname.replace('/'+locale+'/', '/'+value+'/')}>
+    <Link to={location.pathname.replace('/'+locale+'/', '/'+value+'/')}>
     {value}
     </Link> );    
   }
