@@ -56,7 +56,7 @@ const Header = ({ siteTitle, locale, location }) => (
           {siteTitle}
         </Link>
       </div>
-     
+      <script data-ad-client="ca-pub-3417711157588668" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </div>
     <div className="header-right">
       <Link to={locale + '/contact/'}>
